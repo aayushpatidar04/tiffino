@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\FoodController;
+use App\Http\Controllers\API\SubsProductsController;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
@@ -15,3 +16,5 @@ Route::get('/allfooditems',[FoodController::class, 'allfooditems']);
 Route::post('/fooddetails',[FoodController::class, 'fooddetails']);
 Route::post('/add_to_cart',[CartController::class, 'add_to_cart']);
 Route::post('/cart',[CartController::class, 'cart']);
+
+Route::post('/getallproducts',[SubsProductsController::class, 'getallproducts']);

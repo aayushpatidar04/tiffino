@@ -106,7 +106,7 @@ class SubsController extends Controller
         $product->subscription_sub_category_id = $request->subscription_sub_category_id;
         $product->rating = 0;
         $product->save();
-        return redirect()->route('subs.products',$request->subscription_category_id)->with('success','Product added successfully');
+        return redirect()->route('subs.products',$request->subscription_sub_category_id)->with('success','Product added successfully');
     }
     public function editproduct($id)
     {
