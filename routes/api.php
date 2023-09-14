@@ -18,3 +18,4 @@ Route::post('/add_to_cart',[CartController::class, 'add_to_cart']);
 Route::post('/cart',[CartController::class, 'cart']);
 
 Route::post('/getallproducts',[SubsProductsController::class, 'getallproducts']);
+Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetails']);
