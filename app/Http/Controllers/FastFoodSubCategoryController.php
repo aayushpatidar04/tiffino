@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\FastFoodSubCategory;
 use Illuminate\Http\Request;
 
@@ -25,7 +24,8 @@ class FastFoodSubCategoryController extends Controller
             'name'=>'required',
             'price'=>'required',
             'image'=>'required',
-            'description'=>'required'
+            'description'=>'required',
+            'fastfood_id'=>'required'
         ]);
         $data=new FastFoodSubCategory();
         $data->name=$request->name;
@@ -39,6 +39,7 @@ class FastFoodSubCategoryController extends Controller
             $data->image=$filename;
         }
         $data->description=$request->description;
+        $data->fastfood_id=$request->fastfood_id;
         $data->save();
         return redirect()->route('fastfoodsubcategory.index')->with('success','FastFood SubCategory Added Successfully');
     }
@@ -63,6 +64,7 @@ class FastFoodSubCategoryController extends Controller
             $fastfood->image=$filename;
         }
         $fastfood->description=$request->description;
+        $fastfood->fastfood_id=$request->fastfood_id;
         $fastfood->save();
         return redirect()->route('fastfoodsubcategory.index')->with('success','FastFood SubCategory Updated Successfully');
     }
