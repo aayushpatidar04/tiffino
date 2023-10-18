@@ -7,6 +7,8 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SubsController;
+use App\Http\Controllers\FastFoodController;
+use App\Http\Controllers\FastFoodSubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +45,15 @@ Route::post('/createproduct',[SubsController::class,'store'])->name('subproducts
 Route::get('/editproduct/{id}',[SubsController::class,'editproduct'])->name('subproducts.edit');
 Route::post('/updateproduct',[SubsController::class,'updateproduct'])->name('subproducts.update');
 Route::get('/deleteproduct/{id}',[SubsController::class,'deleteproduct'])->name('subproducts.delete');
+Route::get('/fastfoodindex',[FastFoodController::class,'index'])->name('fastfood.index');
+Route::get('/fastfoodcreate',[FastFoodController::class,'create'])->name('fastfood.create');
+Route::post('/fastfoodstore',[FastFoodController::class,'store'])->name('fastfood.store');
+Route::get('/fastfoodedit/{id}',[FastFoodController::class,'edit'])->name('fastfood.edit');
+Route::post('/fastfoodupdate',[FastFoodController::class,'update'])->name('fastfood.update');
+Route::get('/fastfooddelete/{id}',[FastFoodController::class,'delete'])->name('fastfood.delete');
+Route::get('/fastfoodsubcategoryindex',[FastFoodSubCategoryController::class,'index'])->name('fastfoodsubcategory.index');
+Route::get('/fastfoodsubcategorycreate',[FastFoodSubCategoryController::class,'create'])->name('fastfoodsubcategory.create');
+Route::post('/fastfoodsubcategorystore',[FastFoodSubCategoryController::class,'store'])->name('fastfoodsubcategory.store');
+Route::get('/fastfoodsubcategoryedit/{id}',[FastFoodSubCategoryController::class,'edit'])->name('fastfoodsubcategory.edit');
+Route::post('/fastfoodsubcategoryupdate',[FastFoodSubCategoryController::class,'update'])->name('fastfoodsubcategory.update');
+Route::get('/fastfoodsubcategorydelete/{id}',[FastFoodSubCategoryController::class,'delete'])->name('fastfoodsubcategory.delete');
