@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CartController;
+use App\Http\Controllers\API\FastFoodController;
 use App\Http\Controllers\API\FoodController;
 use App\Http\Controllers\API\SubsProductsController;
 
@@ -19,3 +20,6 @@ Route::post('/cart',[CartController::class, 'cart']);
 
 Route::post('/getallproducts',[SubsProductsController::class, 'getallproducts']);
 Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetails']);
+
+Route::post('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
+Route::post('/getfastfooddetails',[FastFoodController::class,'getfastfooddetails']);
