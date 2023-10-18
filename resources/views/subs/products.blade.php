@@ -18,7 +18,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header card-header-flex">
-                        <h4 class="card-title">Products List</h4>
+                        <h4 class="card-title">Product List</h4>
                         <a href="{{ Route('subproducts.create',$id) }}" class="btn btn-primary end-items">Add Products</a>
                         <a href="{{ Route('subs.categories',DB::table('subscription_sub_category')->where('id', $id)->value('subscription_category_id')) }}" class="btn btn-primary end-items">Back</a>
                     </div>
