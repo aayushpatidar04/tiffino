@@ -13,12 +13,13 @@ class CartController extends Controller
     public function add_to_cart(Request $request)
     {
         $food = Food::find($request->food_id);
-        $user = User::find($request->user_id);
+        $user = User::where('email', $request->user_email)->first();
         $price = $food->price;
         $quantity = $request->quantity;
         $total = $request->total;
         $cart = new Cart();
         $cart->user_id = $user->id;
+        $cart->user_email = $user->email;
         $cart->food_id = $food->id;
         $cart->quantity = $quantity;
         $cart->price = $price;
@@ -31,8 +32,8 @@ class CartController extends Controller
     }
     public function cart(Request $request)
     {
-        $user = User::find($request->user_id);
-        $cart = Cart::where('user_id', $user->id)->get();
+        $user = User::where('email', $request->user_email)->first();
+        $cart = Cart::where('user_email', $user->email)->get();
         if($cart->isEmpty()) {
             return response()->json([
                 'message' => 'Cart is empty'
