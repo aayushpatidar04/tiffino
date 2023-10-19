@@ -23,3 +23,5 @@ Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetai
 
 Route::post('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
 Route::post('/getfastfooddetails',[FastFoodController::class,'getfastfooddetails']);
+
+Route::post('/getaddressdetails',[FastFoodController::class,'getaddressdetails']);
