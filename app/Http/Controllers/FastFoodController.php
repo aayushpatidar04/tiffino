@@ -4,13 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\FastFood;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+
 
 class FastFoodController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $fastfoods = FastFood::all();
-        return view('fastfood.index', compact('fastfoods'));
+        if($request->ajax())
+        {
+            $data=FastFood::all();
+            return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action',function($row){
+                $btn='<a href="'.route('fastfood.subproducts', $row->id).'" class="edit btn btn-lg btn-primary">View Products</a>';
+                $btn = $btn . '&nbsp;<a href="'. route('fastfood.edit', $row->id).'" class="btn btn-lg btn-primary">Edit</a>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+        return view('fastfood.index');
     }
 
     public function create()

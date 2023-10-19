@@ -18,7 +18,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header card-header-flex">
-                        <h4 class="card-title">Products List</h4>
+                        <h4 class="card-title">SubProducts List</h4>
                         {{-- <a href="{{ Route('subproducts.create',$id) }}" class="btn btn-primary end-items">Add Products</a> --}}
                         {{-- <a href="{{ Route('subs.categories',DB::table('subscription_sub_category')->where('id', $id)->value('subscription_category_id')) }}" class="btn btn-primary end-items">Back</a> --}}
                     </div>
@@ -58,13 +58,16 @@
     $(function() {
         var full_url = document.URL;
         var url_array = full_url.split('/');
-        var last_segment = url_array[url_array.length-1];
-        var ajaxurl = "{{ Route('fastfood.subproducts') }}";
+        var last_segment = url_array[url_array.length - 1];
+        var ajaxurl = "{{ route('fastfood.subproducts', ':id') }}";
+        ajaxurl = ajaxurl.replace(':id', last_segment);
+        
         var table = $('.yajra_datatable').DataTable({
             processing: true,
             serverSide: true,
-            // ajax: ajaxurl.replace(':id', last_segment),
-            columns: [{
+            ajax: ajaxurl,
+            columns: [
+                {
                     data: 'id',
                     name: 'id',
                 },
@@ -99,6 +102,7 @@
 
     });
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 <script type="text/javascript">
     $(document).on('click', '.delete', function() {
