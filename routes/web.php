@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DeliveryBoysController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\HomeController;
@@ -51,9 +52,16 @@ Route::post('/fastfoodstore',[FastFoodController::class,'store'])->name('fastfoo
 Route::get('/fastfoodedit/{id}',[FastFoodController::class,'edit'])->name('fastfood.edit');
 Route::post('/fastfoodupdate',[FastFoodController::class,'update'])->name('fastfood.update');
 Route::get('/fastfooddelete/{id}',[FastFoodController::class,'delete'])->name('fastfood.delete');
-Route::get('/fastfoodsubcategoryindex',[FastFoodSubCategoryController::class,'index'])->name('fastfoodsubcategory.index');
+Route::get('/fastfoodsubcategoryindex/{id}',[FastFoodSubCategoryController::class,'index'])->name('fastfood.subproducts');
 Route::get('/fastfoodsubcategorycreate',[FastFoodSubCategoryController::class,'create'])->name('fastfoodsubcategory.create');
 Route::post('/fastfoodsubcategorystore',[FastFoodSubCategoryController::class,'store'])->name('fastfoodsubcategory.store');
 Route::get('/fastfoodsubcategoryedit/{id}',[FastFoodSubCategoryController::class,'edit'])->name('fastfoodsubcategory.edit');
 Route::post('/fastfoodsubcategoryupdate',[FastFoodSubCategoryController::class,'update'])->name('fastfoodsubcategory.update');
 Route::get('/fastfoodsubcategorydelete/{id}',[FastFoodSubCategoryController::class,'delete'])->name('fastfoodsubcategory.delete');
+
+Route::get('/addressindex',[AddressController::class,'index'])->name('address.index');
+Route::get('/addresscreate',[AddressController::class,'create'])->name('address.create');
+Route::post('/addressstore',[AddressController::class,'store'])->name('address.store');
+Route::get('/addressedit/{id}',[AddressController::class,'edit'])->name('address.edit');
+Route::post('/addressupdate',[AddressController::class,'update'])->name('address.update');
+Route::get('/addressdelete/{id}',[AddressController::class,'delete'])->name('address.delete');

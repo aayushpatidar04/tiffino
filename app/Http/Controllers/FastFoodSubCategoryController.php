@@ -4,13 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\FastFoodSubCategory;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class FastFoodSubCategoryController extends Controller
 {
-    public function index()
+    public function index($id, Request $request)
     {
-        $fastfoods = FastFoodSubCategory::all();
-        return view('fastfoodsubcategory.index', compact('fastfoods'));
+        if($request->ajax())
+        {
+            $data=FastFoodSubCategory::where('fastfood_id', $id)->get();
+            return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action',function($row){
+                $btn='<a href="#" class="edit btn btn-lg btn-primary">View SubCategories</a>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+        return view('fastfood.subproducts');
     }
 
     public function create()

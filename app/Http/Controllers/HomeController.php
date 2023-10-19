@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-        if(Session::get('loginsuccess') && Session::get('loginsuccess')=='Logged In Successfully')
+        if(Session()->has('loginsuccess') && Session::get('loginsuccess')=='Logged In Successfully')
         {
             return view('index');
         }
