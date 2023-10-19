@@ -57,8 +57,6 @@ class AddressController extends Controller
     public function update(Request $request)
     {
         $data = Address::find($request->id);
-        $data->user_id=$request->user_id;
-        $data->user_email=$request->user_email;
         if(isset($request->home_address) && $request->home_address!=""){
             $data->home_address=$request->home_address;
         }

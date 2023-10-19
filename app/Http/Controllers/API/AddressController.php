@@ -7,7 +7,7 @@ use App\Models\Address;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class FastFoodController extends Controller
+class AddressController extends Controller
 {
     public function getaddressdetails(Request $request)
     {

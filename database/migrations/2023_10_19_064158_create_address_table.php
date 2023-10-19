@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('address', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('user_email');
             $table->foreign('user_email')->references('email')->on('users')->onDelete('cascade');
-            $table->string('home_address');
-            $table->string('work_address');
-            $table->string('other_address_1');
-            $table->string('other_address_2');
+            $table->longText('home_address')->default('');
+            $table->longText('work_address')->default('');
+            $table->longText('other_address_1')->default('');
+            $table->longText('other_address_2')->default('');
             $table->timestamps();
         });
     }

@@ -6,6 +6,8 @@ use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\FastFoodController;
 use App\Http\Controllers\API\FoodController;
 use App\Http\Controllers\API\SubsProductsController;
+use App\Http\Controllers\API\AddressController;
+
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
@@ -24,4 +26,4 @@ Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetai
 Route::post('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
 Route::post('/getfastfooddetails',[FastFoodController::class,'getfastfooddetails']);
 
-Route::post('/getaddressdetails',[FastFoodController::class,'getaddressdetails']);
+Route::post('/getaddressdetails',[AddressController::class,'getaddressdetails']);
