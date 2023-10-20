@@ -21,11 +21,11 @@ class FastFoodController extends Controller
         }
         else
         {
-            $data = FastFoodSubCategory::where('fastfood_id',$request->id)->get();
-            foreach($data as $d)
-            {
-                $d->fastfood_type=FastFood::find($d->fastfood_id)->name;
-            }
+            $data = FastFood::where('id',$request->id)->get();
+            // foreach($data as $d)
+            // {
+            //     $d->fastfood_type=FastFood::find($d->fastfood_id)->name;
+            // }
             return response()->json($data);
         }
     }
