@@ -20,7 +20,8 @@ Route::post('/fooddetails',[FoodController::class, 'fooddetails']);
 Route::post('/add_to_cart',[CartController::class, 'add_to_cart']);
 Route::post('/cart',[CartController::class, 'cart']);
 
-Route::post('/getallproducts',[SubsProductsController::class, 'getallproducts']);
+
+Route::get('/getallproducts/{id}/{slug}',[SubsProductsController::class, 'getallproducts']);
 Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetails']);
 
 Route::post('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
