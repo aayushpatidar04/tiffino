@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\FastFoodSubCategory;
 use App\Models\Food;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,8 +12,12 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function add_to_cart(Request $request)
-    {
-        $food = Food::find($request->food_id);
+    {   
+        if($request->foodtype == "food"){
+            $food = Food::find($request->food_id);  
+        }else if($request->foodtype == "fastfood"){
+            $food = FastFoodSubCategory::find($request->food_id);
+        }
         $user = User::where('email', $request->user_email)->first();
         $price = $food->price;
         $quantity = $request->quantity;
