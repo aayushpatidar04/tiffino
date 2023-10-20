@@ -53,7 +53,7 @@ Route::get('/fastfoodedit/{id}',[FastFoodController::class,'edit'])->name('fastf
 Route::post('/fastfoodupdate',[FastFoodController::class,'update'])->name('fastfood.update');
 Route::get('/fastfooddelete/{id}',[FastFoodController::class,'delete'])->name('fastfood.delete');
 Route::get('/fastfoodsubcategoryindex/{id}',[FastFoodSubCategoryController::class,'index'])->name('fastfood.subproducts');
-Route::get('/fastfoodsubcategorycreate',[FastFoodSubCategoryController::class,'create'])->name('fastfoodsubcategory.create');
+Route::get('/fastfoodsubcategorycreate/{id}',[FastFoodSubCategoryController::class,'create'])->name('fastfoodsubcategory.create');
 Route::post('/fastfoodsubcategorystore',[FastFoodSubCategoryController::class,'store'])->name('fastfoodsubcategory.store');
 Route::get('/fastfoodsubcategoryedit/{id}',[FastFoodSubCategoryController::class,'edit'])->name('fastfoodsubcategory.edit');
 Route::post('/fastfoodsubcategoryupdate',[FastFoodSubCategoryController::class,'update'])->name('fastfoodsubcategory.update');

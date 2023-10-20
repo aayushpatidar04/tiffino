@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-header card-header-flex">
                         <h4 class="card-title">SubProducts List</h4>
-                        {{-- <a href="{{ Route('subproducts.create',$id) }}" class="btn btn-primary end-items">Add Products</a> --}}
+                        <a href="{{ Route('fastfoodsubcategory.create',$id) }}" class="btn btn-primary end-items">Add Products</a>
                         {{-- <a href="{{ Route('subs.categories',DB::table('subscription_sub_category')->where('id', $id)->value('subscription_category_id')) }}" class="btn btn-primary end-items">Back</a> --}}
                     </div>
                     <div class="card-body">
@@ -90,6 +90,10 @@
                 {
                     data: 'image',
                     name: 'image',
+                    render: function(data, type, full, meta) {
+                        return "<img src={{ URL::to('/') }}/images/fastfood/" + data + " height='70' class='img-thumbnail' />";
+                    },
+                    orderable: false
                 },
                 {
                     data: 'action',
@@ -108,7 +112,7 @@
     $(document).on('click', '.delete', function() {
         var row_id = $(this).attr('id');
         var table_row = $(this).closest('tr');
-        var url = "{{ route('subproducts.delete', ':id') }}";
+        var url = "{{ route('fastfoodsubcategory.delete', ':id') }}";
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

@@ -19,6 +19,7 @@ class FastFoodController extends Controller
             ->addColumn('action',function($row){
                 $btn='<a href="'.route('fastfood.subproducts', $row->id).'" class="edit btn btn-lg btn-primary">View Products</a>';
                 $btn = $btn . '&nbsp;<a href="'. route('fastfood.edit', $row->id).'" class="btn btn-lg btn-primary">Edit</a>';
+                $btn=$btn.' <a href="javascript:void(0);" id="'.$row->id.'" class="delete btn btn-lg"><i style="color:black" class="fa fa-trash"></i></a>';
                 return $btn;
             })
             ->rawColumns(['action'])
@@ -57,7 +58,7 @@ class FastFoodController extends Controller
         return redirect()->route('fastfood.index')->with('success','FastFood Updated Successfully');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         $data=FastFood::find($id);
         $data->delete();

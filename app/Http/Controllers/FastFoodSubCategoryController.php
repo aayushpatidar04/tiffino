@@ -16,18 +16,19 @@ class FastFoodSubCategoryController extends Controller
             return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('action',function($row){
-                $btn='<a href="#" class="edit btn btn-lg btn-primary">View SubCategories</a>';
+                $btn='<a href="'.route('fastfoodsubcategory.edit',$row->id).'" class="edit btn btn-lg"><i class="fa fa-pencil"></i></a>';
+                $btn=$btn.' <a href="javascript:void(0);" id="'.$row->id.'" class="delete btn btn-lg"><i style="color:black" class="fa fa-trash"></i></a>';
                 return $btn;
             })
             ->rawColumns(['action'])
             ->make(true);
         }
-        return view('fastfood.subproducts');
+        return view('fastfood.subproducts', compact('id'));
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('fastfoodsubcategory.create');
+        return view('fastfood.create', compact('id'));
     }
 
     public function store(Request $request)
@@ -53,13 +54,13 @@ class FastFoodSubCategoryController extends Controller
         $data->description=$request->description;
         $data->fastfood_id=$request->fastfood_id;
         $data->save();
-        return redirect()->route('fastfoodsubcategory.index')->with('success','FastFood SubCategory Added Successfully');
+        return redirect()->route('fastfood.index')->with('success','FastFood SubCategory Added Successfully');
     }
 
     public function edit($id)
     {
         $data=FastFoodSubCategory::find($id);
-        return view('fastfoodsubcategory.edit', compact('data'));
+        return view('fastfood.subedit', compact('data', 'id'));
     }
 
     public function update(Request $request)
@@ -78,13 +79,13 @@ class FastFoodSubCategoryController extends Controller
         $fastfood->description=$request->description;
         $fastfood->fastfood_id=$request->fastfood_id;
         $fastfood->save();
-        return redirect()->route('fastfoodsubcategory.index')->with('success','FastFood SubCategory Updated Successfully');
+        return redirect()->route('fastfood.index')->with('success','FastFood SubCategory Updated Successfully');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         $data=FastFoodSubCategory::find($id);
         $data->delete();
-        return redirect()->route('fastfoodsubcategory.index')->with('success','FastFood SubCategory Deleted Successfully');
+        return redirect()->back()->with('success','FastFood SubCategory Deleted Successfully');
     }
 }
