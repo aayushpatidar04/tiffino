@@ -12,7 +12,7 @@ class AddressController extends Controller
     public function getaddressdetails(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => 'required'
+            'user_email' => 'required'
         ]);
         if($validator->fails()) 
         {
@@ -20,7 +20,7 @@ class AddressController extends Controller
         }
         else
         {
-            $data =Address::find($request->id);
+            $data =Address::where('user_email', $request->user_email)->first();
             return response()->json($data);
         }
     }
