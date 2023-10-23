@@ -19,7 +19,7 @@ Route::get('/allfooditems',[FoodController::class, 'allfooditems']);
 Route::post('/fooddetails',[FoodController::class, 'fooddetails']);
 Route::post('/add_to_cart',[CartController::class, 'add_to_cart']);
 Route::post('/cart',[CartController::class, 'cart']);
-
+Route::post('/delete_from_cart',[CartController::class, 'delete_from_cart']);
 
 Route::get('/getallproducts/{id}/{slug}',[SubsProductsController::class, 'getallproducts']);
 Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetails']);

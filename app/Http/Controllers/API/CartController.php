@@ -44,6 +44,10 @@ class CartController extends Controller
     public function cart(Request $request)
     {
         $user = User::where('email', $request->user_email)->first();
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
         $cart = Cart::where('user_email', $user->email)->get();
         if($cart->isEmpty()) {
             return response()->json([
@@ -59,6 +63,24 @@ class CartController extends Controller
             ];
             
             return response()->json($responseData, 200);
+        }
+    }
+
+    public function delete_from_cart(Request $request){
+        $request->validate([
+            'cart_id' => 'required',
+            'user_email' => 'required',
+        ]);
+
+        $data=Cart::find($request->cart_id);
+        if ($data) {
+            if ($data->user_email != $request->user_email){
+                return response()->json(['message' => 'Unauthorized'], 401);        
+            }
+            $data->delete();
+            return response()->json(['message' => 'Cart deleted successfully'], 200);
+        } else {
+            return response()->json(['message' => 'Cart not found'], 404);
         }
     }
 }
