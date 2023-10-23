@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 23, 2023 at 05:58 AM
--- Server version: 10.6.14-MariaDB-cll-lve
--- PHP Version: 8.1.16
+-- Host: 127.0.0.1
+-- Generation Time: Oct 23, 2023 at 10:28 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `into4859_tiffino`
+-- Database: `tiffino`
 --
 
 -- --------------------------------------------------------
@@ -72,7 +72,10 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `user_id`, `user_email`, `food_id`, `quantity`, `price`, `total`, `created_at`, `updated_at`, `food_name`, `food_image`, `food_type`) VALUES
-(1, 4, 'qwerty@gmail.com', 2, 1, 1, 1, '2023-10-21 07:41:22', '2023-10-21 07:50:05', 'Poha Poha', '1690287734.jfif', 'food');
+(4, 1, 'paliwaladitya2@gmail.com', 2, 1, 30, 30, '2023-10-23 02:42:30', '2023-10-23 02:42:30', 'Poha Poha', '1690287734.jfif', 'food'),
+(5, 1, 'paliwaladitya2@gmail.com', 3, 1, 32, 32, '2023-10-23 02:42:34', '2023-10-23 02:42:34', 'Poha 2', '1690289595.jfif', 'food'),
+(6, 4, 'qwerty@gmail.com', 1, 1, 150, 150, '2023-10-23 02:43:02', '2023-10-23 02:43:02', 'Margarita pizza', '1697623073.jpg', 'fastfood'),
+(7, 4, 'qwerty@gmail.com', 1, 1, 150, 150, '2023-10-23 02:47:42', '2023-10-23 02:47:42', 'Margarita pizza', '1697623073.jpg', 'fastfood');
 
 -- --------------------------------------------------------
 
@@ -503,7 +506,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `delivery_boys`
