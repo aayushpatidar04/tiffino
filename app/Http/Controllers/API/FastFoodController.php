@@ -12,22 +12,14 @@ class FastFoodController extends Controller
 {
     public function getallfastfood(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required'
-        ]);
-        if($validator->fails()) 
-        {
-            return response()->json($validator->errors());
-        }
-        else
-        {
-            $data = FastFood::where('id',$request->id)->get();
-            // foreach($data as $d)
-            // {
-            //     $d->fastfood_type=FastFood::find($d->fastfood_id)->name;
-            // }
-            return response()->json($data);
-        }
+            $categories = FastFood::all();
+            $response = [];
+            foreach($categories as $category){
+                $subcategorydata = FastFoodSubCategory::where('fastfood_id',$category->id)->get();
+                $response[$category->name] = $subcategorydata;  
+            }
+            return response()->json($response, 200);
+        
     }
     public function getfastfooddetails(Request $request)
     {

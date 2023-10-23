@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 20, 2023 at 01:15 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost:3306
+-- Generation Time: Oct 23, 2023 at 05:58 AM
+-- Server version: 10.6.14-MariaDB-cll-lve
+-- PHP Version: 8.1.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tiffino`
+-- Database: `into4859_tiffino`
 --
 
 -- --------------------------------------------------------
@@ -44,8 +44,7 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `user_id`, `user_email`, `home_address`, `work_address`, `other_address_1`, `other_address_2`, `created_at`, `updated_at`) VALUES
-(1, 1, 'paliwaladitya2@gmail.com', 'Indore, M.P', '', 'Thane', 'Mumbai', '2023-10-19 04:24:59', '2023-10-20 05:39:17'),
-(2, 4, 'qwerty@gmail.com', '', '', '', 'UP', '2023-10-20 05:44:54', '2023-10-20 05:44:54');
+(1, 4, 'qwerty@gmail.com', 'ytrew', 'pppppp', 'qqqqqqq', 'rrrrrr', '2023-10-19 04:24:59', '2023-10-21 07:37:34');
 
 -- --------------------------------------------------------
 
@@ -62,16 +61,18 @@ CREATE TABLE `carts` (
   `price` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `food_name` varchar(255) NOT NULL,
+  `food_image` varchar(255) NOT NULL,
+  `food_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `carts`
 --
 
-INSERT INTO `carts` (`id`, `user_id`, `user_email`, `food_id`, `quantity`, `price`, `total`, `created_at`, `updated_at`) VALUES
-(1, 2, '', 2, 2, 30, 60, '2023-07-27 04:35:23', '2023-07-27 04:35:23'),
-(2, 2, '', 3, 2, 32, 64, '2023-07-27 04:38:32', '2023-07-27 04:38:32');
+INSERT INTO `carts` (`id`, `user_id`, `user_email`, `food_id`, `quantity`, `price`, `total`, `created_at`, `updated_at`, `food_name`, `food_image`, `food_type`) VALUES
+(1, 4, 'qwerty@gmail.com', 2, 1, 1, 1, '2023-10-21 07:41:22', '2023-10-21 07:50:05', 'Poha Poha', '1690287734.jfif', 'food');
 
 -- --------------------------------------------------------
 
@@ -122,8 +123,9 @@ CREATE TABLE `fastfood` (
 --
 
 INSERT INTO `fastfood` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'pizza', '2023-10-18 04:12:42', '2023-10-18 04:12:42'),
-(2, 'burger', '2023-10-18 04:13:09', '2023-10-18 04:13:09');
+(1, 'Pizza', '2023-10-18 04:12:42', '2023-10-19 07:11:27'),
+(2, 'Burger', '2023-10-18 04:13:09', '2023-10-19 07:11:38'),
+(3, 'Sandwich', '2023-10-19 05:33:08', '2023-10-19 05:33:08');
 
 -- --------------------------------------------------------
 
@@ -147,7 +149,7 @@ CREATE TABLE `fastfood_sub_category` (
 --
 
 INSERT INTO `fastfood_sub_category` (`id`, `name`, `price`, `image`, `description`, `fastfood_id`, `created_at`, `updated_at`) VALUES
-(1, 'margarita pizza', '150', '1697623073.jpg', 'cheese loaded', 1, '2023-10-18 04:27:53', '2023-10-18 04:27:53');
+(1, 'Margarita pizza', '150', '1697623073.jpg', 'cheese loaded', 1, '2023-10-18 04:27:53', '2023-10-20 05:16:14');
 
 -- --------------------------------------------------------
 
@@ -204,7 +206,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2023_10_18_072010_create_fastfood_table', 8),
 (13, '2023_10_18_072105_create_fastfood_sub_category_table', 8),
 (14, '2023_10_19_035134_add_column_to_carts_table', 9),
-(15, '2023_10_19_064158_create_address_table', 9);
+(15, '2023_10_21_035355_remove_foreign_key_from_table_name', 10),
+(16, '2023_10_21_035844_add_column_to_carts_table', 11),
+(17, '2023_10_21_074719_add_column_to_carts_table', 12),
+(18, '2023_10_23_035840_add_column_to_carts_table', 13);
 
 -- --------------------------------------------------------
 
@@ -317,7 +322,8 @@ INSERT INTO `subscription_products` (`id`, `name`, `subscription_category_id`, `
 (23, 'testing 22', 2, 8, '22', 'testing', '1694600569.jfif', 0, '2023-09-13 04:52:50', '2023-09-13 04:52:50'),
 (24, 'testing 23', 2, 8, '23', 'testing', '1694600607.jfif', 0, '2023-09-13 04:53:27', '2023-09-13 04:53:27'),
 (25, 'testing 24', 2, 8, '24', 'testing', '1694600623.jfif', 0, '2023-09-13 04:53:43', '2023-09-13 04:53:43'),
-(26, 'Breakfast1', 1, 1, '10', 'kha lo', '1697438995.jpg', 0, '2023-10-16 06:49:55', '2023-10-16 06:49:55');
+(26, 'Breakfast1', 1, 1, '10', 'kha lo', '1697438995.jpg', 0, '2023-10-16 06:49:55', '2023-10-16 06:49:55'),
+(27, 'dhairya', 1, 1, '500', 'ft', 'dtyju', 5, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -373,7 +379,7 @@ INSERT INTO `users` (`id`, `api_token`, `name`, `email`, `email_verified_at`, `p
 (1, NULL, 'Aditya Paliwal', 'paliwaladitya2@gmail.com', NULL, '$2y$10$i6Yljbe6cOdHaixsVusZ6eVmS6E.x0tsnaBwMW23K4YcHC3QuisLO', NULL, '2023-07-24 05:31:39', '2023-07-24 05:31:58'),
 (2, NULL, 'Aditya Paliwal 1', 'aditya@gmail.com', NULL, '$2y$10$nrs8DGPDsBS1RPFlW5DBSu8lV4RI/7qbWPsvCHDHgGPJmKQawugdq', NULL, '2023-07-24 05:45:50', '2023-07-24 05:45:50'),
 (3, 'ad2IVW4DdmVKInN7kpqIBFk0z0BHeKbSS1yXKGxDN55IRAV5tvP8mzMnwp1k', 'qwe', 'qwe@gmail.com', NULL, '$2y$10$VYNaez4fDNvXpbtYKPPJ1Ox4zbH4hQkDtdiAaZz9g7Qfr9SrG00Qq', NULL, '2023-09-20 11:42:19', '2023-09-20 11:42:19'),
-(4, 'qCRk5dYgnSYd7rJyTPXjx81SnmWhPLknMgyVVHPkV4od95M2nT1OblT3Ivvt', 'qwerty', 'qwerty@gmail.com', NULL, '$2y$10$7IhyA9wgcgJFUKmyfye3T.MuAcmQs2c2Viqa/w70dhXmfnaKzz3HK', NULL, '2023-09-20 11:44:02', '2023-09-28 11:43:32'),
+(4, 'wPEVJMpUYNZySoRdyftr98IVnOnA211jHe1YtgRSOynUPg56mjo0tdYUPNpT', 'qwerty', 'qwerty@gmail.com', NULL, '$2y$10$7IhyA9wgcgJFUKmyfye3T.MuAcmQs2c2Viqa/w70dhXmfnaKzz3HK', NULL, '2023-09-20 11:44:02', '2023-10-20 07:13:04'),
 (6, 'cAOTCYAKwAUINLZB2AsR3vWWugeuM6tvKF4ZK44Jl6Z1F59zS2Ge1XkbVbfk', 'Aayush Patidar', 'aayushpatidar04@gmail.com', NULL, '$2y$10$ubdVuf/Cajbq7XCCU9Xi1.2hdvLxSGuEI8.Hl1Ov83CKKIsg/Gkf2', NULL, '2023-09-20 14:02:18', '2023-09-20 14:02:18'),
 (10, 'QSWvu5ti4r1JFsIt63NRZYk8IKfPalKx4H2ZwJCwk1G1ztnjBgIgWGCcXAMJ', 'qwertyuiop', 'qwertyuiop@gmail.com', NULL, '$2y$10$UIjjYnONUs.G1tcXc3VXZOK0.TqMT/c2t4BKU/Q9iZG59UxL/f36a', NULL, '2023-09-21 10:13:19', '2023-09-21 10:13:19'),
 (12, 'qOikfjBRZ1myYd1gle5cZzsrUG4hTD8i9jbSTloa3NICV0YkIVwerJZlbams', 'dhairyahaia', 'dhairyajain299@gmail.com', NULL, '$2y$10$YK/gFOjbGHwH.rCdVwJgn.aOgP2kr8x5Pp9whYyBRH01l36p93fsS', NULL, '2023-10-16 06:06:29', '2023-10-16 06:06:29');
@@ -395,8 +401,7 @@ ALTER TABLE `address`
 --
 ALTER TABLE `carts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `carts_user_id_foreign` (`user_id`),
-  ADD KEY `carts_food_id_foreign` (`food_id`);
+  ADD KEY `carts_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `delivery_boys`
@@ -492,13 +497,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `delivery_boys`
@@ -516,7 +521,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `fastfood`
 --
 ALTER TABLE `fastfood`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `fastfood_sub_category`
@@ -534,7 +539,7 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -552,7 +557,7 @@ ALTER TABLE `subscription_category`
 -- AUTO_INCREMENT for table `subscription_products`
 --
 ALTER TABLE `subscription_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `subscription_sub_category`
@@ -581,7 +586,6 @@ ALTER TABLE `address`
 -- Constraints for table `carts`
 --
 ALTER TABLE `carts`
-  ADD CONSTRAINT `carts_food_id_foreign` FOREIGN KEY (`food_id`) REFERENCES `food` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `carts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --

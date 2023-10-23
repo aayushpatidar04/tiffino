@@ -24,8 +24,8 @@ Route::post('/cart',[CartController::class, 'cart']);
 Route::get('/getallproducts/{id}/{slug}',[SubsProductsController::class, 'getallproducts']);
 Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetails']);
 
-Route::post('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
+Route::get('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
 Route::post('/getfastfooddetails',[FastFoodController::class,'getfastfooddetails']);
 
-Route::get('/getaddressdetails',[AddressController::class,'getaddressdetails']);
+Route::post('/getaddressdetails',[AddressController::class,'getaddressdetails']);
 Route::post('/saveaddressdetails',[AddressController::class,'saveaddressdetails']);
