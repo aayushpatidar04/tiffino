@@ -15,7 +15,8 @@ class LoginController extends Controller
     {
         if($request->email == 'admin@gmail.com' && $request->password == 'admin@123')
         {
-            return redirect()->route('dashboard')->with('loginsuccess','Logged In Successfully');
+            session()->put('loginsuccess', 'Logged In Successfully');
+            return redirect()->route('dashboard');
         }
         else
         {
@@ -24,7 +25,7 @@ class LoginController extends Controller
     }
     public function logout()
     {
-        dd(Session::get('loginsuccess'));
+        // dd(Session::get('loginsuccess'));
         Session::flush();
         return redirect()->route('login')->with('loginsuccess','Logged Out Successfully');
     }

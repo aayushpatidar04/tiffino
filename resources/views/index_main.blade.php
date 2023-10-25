@@ -122,6 +122,11 @@
 							<span class="nav-text">Manage Food Items</span>
 						</a>
 					</li>
+                    <li>
+                        <a href="{{ Route('fastfood.index') }}" class="ai-icon" aria-expanded="false">
+							<span class="nav-text">Manage Fast Food</span>
+						</a>
+					</li>
                     <li><a href="{{ Route('db.index') }}" class="ai-icon" aria-expanded="false">
                             <span class="nav-text">Manage Delivery Boys</span>
                         </a>
@@ -130,7 +135,7 @@
 							<span class="nav-text">Manage Subscriptions</span>
 						</a>
 					</li>
-					<li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
+					<li><a href="#" class="ai-icon" aria-expanded="false">
 							<span class="nav-text">Manage Orders</span>
 						</a>
 					</li>
