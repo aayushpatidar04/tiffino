@@ -91,4 +91,42 @@
 
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript">
+    $(document).on('click', '.delete', function() {
+        var row_id = $(this).attr('id');
+        var table_row = $(this).closest('tr');
+        var url = "{{ route('fastfood.delete', ':id') }}";
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'GET',
+                    url: url.replace(':id', row_id),
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: row_id,
+                    },
+                    success: function(data) {
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'Your file has been deleted.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            table_row.remove();
+                        });
+                    }
+                });
+            }
+        })
+    });
+</script>
 @endsection

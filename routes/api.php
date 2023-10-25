@@ -19,11 +19,13 @@ Route::get('/allfooditems',[FoodController::class, 'allfooditems']);
 Route::post('/fooddetails',[FoodController::class, 'fooddetails']);
 Route::post('/add_to_cart',[CartController::class, 'add_to_cart']);
 Route::post('/cart',[CartController::class, 'cart']);
+Route::post('/delete_from_cart',[CartController::class, 'delete_from_cart']);
 
-Route::post('/getallproducts',[SubsProductsController::class, 'getallproducts']);
+Route::get('/getallproducts/{id}/{slug}',[SubsProductsController::class, 'getallproducts']);
 Route::post('/getproductdetails',[SubsProductsController::class,'getproductdetails']);
 
-Route::post('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
+Route::get('/getallfastfood',[FastFoodController::class, 'getallfastfood']);
 Route::post('/getfastfooddetails',[FastFoodController::class,'getfastfooddetails']);
 
 Route::post('/getaddressdetails',[AddressController::class,'getaddressdetails']);
+Route::post('/saveaddressdetails',[AddressController::class,'saveaddressdetails']);

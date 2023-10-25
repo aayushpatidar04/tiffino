@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_email',
+    ];
     protected $table = 'address';
 }
